@@ -1,5 +1,6 @@
 import React from "react";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import SideBarMenus from "./sidebar/SideBarMenus";
 
 
 const SideBar = () => {
@@ -7,7 +8,11 @@ const SideBar = () => {
     if (width <= 768) {
         return null;
     }
-    return <main className="content">SideBar</main>;
+    return (
+        <div className="sidebar">
+            <SideBarMenus />
+        </div>
+    );
 };
 
 export default SideBar;

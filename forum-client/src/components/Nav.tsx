@@ -1,12 +1,25 @@
 import React from "react";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
     const { width } = useWindowDimensions();
-    if (width <= 768) {
+
+    const getMobileMenu = () => {
+        if (width <= 768) {
+            return (
+                <FontAwesomeIcon icon={faBars} size="lg" className="nav-mobile-menu" />
+            );
+        }
         return null;
     }
-    return <main className="content">Nav</main>;
+    return (
+        <nav className="navigation">
+            {getMobileMenu()}
+            <strong>Forum Client</strong>
+        </nav>
+    );
 };
 
 export default Nav;

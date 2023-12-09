@@ -6,7 +6,7 @@ const RightMenu = () => {
     if (width <= 768) {
         return null;
     }
-    return <main className="content">RightMenu</main>;
+    return <div className="rightmenu">TestMenu</div>;
 };
 
 export default RightMenu;

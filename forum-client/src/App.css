@@ -44,8 +44,7 @@
   .App {
     grid-template-columns: 1fr;
     grid-template-areas: 
-    "nav"
-    "content";
+      "nav"
+      "content";
   }
 }
-
