@@ -1,6 +1,7 @@
 import React, { FC, useReducer, useState } from "react";
 import { isPasswordValid, PasswordTestResult } from "../../common/validators/PasswordValidator";
 import ReactModal from "react-modal";
+import "./Registration.css";
 
 const userReducer = (state: any, action: any) => {
     switch (action.type) {

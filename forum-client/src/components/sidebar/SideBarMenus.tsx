@@ -1,13 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../store/AppState";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { UserProfileSetType } from "../../store/user/Reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRegistered } from "@fortawesome/free-solid-svg-icons";
+import Registration from "../auth/Registration";
 
 const SideBarMenus = () => {
+    const [showRegister, setShowRegister] = useState(false);
     const user = useSelector((state: AppState) => state.user);
+
     const dispatch = useDispatch();
+
+    const onClickToggleRegister = () => {
+        setShowRegister(!showRegister);
+    }
 
     useEffect(() => {
         dispatch({
@@ -30,7 +37,10 @@ const SideBarMenus = () => {
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faRegistered} />
-                    <span className="menu-name">register</span>
+                    <span onClick={onClickToggleRegister} className="menu-name">
+                        register
+                    </span>
+                    <Registration isOpen={showRegister} onClickToggle={onClickToggleRegister} />
                 </li>
             </ul>
         </React.Fragment>
