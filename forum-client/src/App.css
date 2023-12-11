@@ -53,6 +53,25 @@
   background-color: coral;
 }
 
+.reg-inputs {
+  min-height: 140px;
+  max-height: 75vh;
+  overflow-y: auto;
+  margin-bottom: 0.5em;
+}
+
+nav {
+  background-color: aqua;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.nav-mobile-menu {
+  margin-right: 1em;
+}
+
 @media screen and (orientation: portrait) and (max-width: 768px) {
   .App {
     grid-template-columns: 1fr;

@@ -102,6 +102,7 @@ const Registration: FC<RegistrationProps> = ({ isOpen, onClickToggle }) => {
             isOpen={isOpen}
             onRequestClose={onClickToggle}
             shouldCloseOnOverlayClick={true}
+            ariaHideApp={false}
         >
             <form>
                 <div className="reg-inputs">
@@ -111,7 +112,7 @@ const Registration: FC<RegistrationProps> = ({ isOpen, onClickToggle }) => {
                     </div>
                     <div>
                         <label>email</label>
-                        <input type="text" value={userName} onChange={onChangeEmail} />
+                        <input type="text" value={email} onChange={onChangeEmail} />
                     </div>
                     <div>
                         <label>password</label>
@@ -131,6 +132,9 @@ const Registration: FC<RegistrationProps> = ({ isOpen, onClickToggle }) => {
                             </button>
                         </div>
                     </div>
+                    <span className="form-btn-right">
+                        <strong>{resultMsg}</strong>
+                    </span>
                 </div>
             </form>
         </ReactModal>
