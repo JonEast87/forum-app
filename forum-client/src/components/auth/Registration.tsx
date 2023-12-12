@@ -98,7 +98,7 @@ const Registration: FC<RegistrationProps> = ({ isOpen, onClickToggle }) => {
 
     return (
         <ReactModal
-            className="modal-name"
+            className="modal-menu"
             isOpen={isOpen}
             onRequestClose={onClickToggle}
             shouldCloseOnOverlayClick={true}
