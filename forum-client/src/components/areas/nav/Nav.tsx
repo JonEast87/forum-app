@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ReactModal from "react-modal";
 // forgot to import the correct sidebar oof
-import SideBarMenus from "./sidebar/SideBarMenus";
+import SideBarMenus from "./../sidebar/SideBarMenus";
+import "./Nav.css";
 
 const Nav = () => {
     const [showMenu, setShowMenu] = useState(false);

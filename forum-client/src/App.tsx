@@ -10,6 +10,7 @@ function App() {
   return (
     <Switch>
       <Route exact={true} path="/" render={renderHome} />
+      <Route path="/categorythreads/:categoryId" render={renderHome} />
     </Switch>
   );
 }
