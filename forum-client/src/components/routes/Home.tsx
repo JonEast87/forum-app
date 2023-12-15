@@ -8,7 +8,7 @@ import "./Home.css";
 
 const Home: FC = () => {
     return (
-        <div className="screem-root-container home-container">
+        <div className="screen-root-container home-container">
             <div className="navigation">
                 <Nav />
             </div>
