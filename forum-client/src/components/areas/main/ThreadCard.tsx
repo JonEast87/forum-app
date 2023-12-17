@@ -11,7 +11,6 @@ interface ThreadCardProps {
 }
 
 // threadcard will be the main op for any posts
-
 const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
     const history = useHistory();
     const { width } = useWindowDimensions();
@@ -81,7 +80,7 @@ const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
     };
 
     return (
-        <section className="panel threadcard-container">
+        <section className="[anel threadcard-container">
             <div className="threadcard-txt-container">
                 <div className="content-header">
                     <Link to={`/categorythreads/${thread.category.id}`} className="link-txt">
@@ -95,27 +94,26 @@ const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
                     <div onClick={onClickShowThread} data-thread-id={thread.id} style={{ marginBottom: ".4em" }}>
                         <strong>{thread.title}</strong>
                     </div>
-                    <div className="threadcard-body" onClick={onClickShowThread} data-thread-id={thread.id}>
+                    <div className="thread-body" onClick={onClickShowThread} data-thread-id={thread.id}>
                         <div>{thread.body}</div>
                     </div>
                     <div className="threadcard-footer">
-                        <span style={{ marginRight: ".5em", }}
-                        >
+                        <span style={{ marginRight: ".5em", }} >
                             <label>
                                 {thread.views}
                                 <FontAwesomeIcon icon={faEye} className="icon-lg" />
                             </label>
                         </span>
                         <span>
-                            {width <= 768 ? (
-                                <ThreadPointsInline points={thread?.points || 0} />
-                            ) : null}
+                            {getPoints(thread)}
                             {getResponses(thread)}
                         </span>
                     </div>
                 </div>
             </div>
-            <ThreadPointsBar points={thread?.points || 0} responseCount={ thread && thread.threadItems && thread.threadItems.length} />
+            {getPointsNonMobile()}
         </section>
-    )
-}
+    );
+};
+
+export default ThreadCard;
