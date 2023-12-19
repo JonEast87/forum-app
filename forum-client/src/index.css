@@ -15,3 +15,11 @@ code {
 ul {
   list-style-type: none;
 }
+
+/* 
+  this selector is used for when customizing SlateJS
+  this selector specifies that it should not affect salte-node that are listed as elements
+*/
+ul:not([data-slate-node="element"]) {
+  list-style-type: none;
+}
