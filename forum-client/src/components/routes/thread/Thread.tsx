@@ -7,7 +7,7 @@ import ThreadTitle from "./ThreadTitle";
 import ThreadModel from "../../../models/Thread";
 import { getThreadById } from "../../../services/DataService";
 import Nav from "../../areas/nav/Nav";
-// import ThreadBody from "./ThreadBody";
+import ThreadBody from "./ThreadBody";
 // import ThreadPointer from "../../points/ThreadPointer";
 
 const Thread = () => {
@@ -34,7 +34,7 @@ const Thread = () => {
                     <ThreadHeader userName={thread?.userName} lastModifiedOn={thread ? thread.lastModifiedOn : new Date()} title={thread?.title} />
                     <ThreadCategory categoryName={thread?.category?.name} />
                     <ThreadTitle title={thread?.title} />
-                    {/* <ThreadBody body={thread?.body} /> */}
+                    <ThreadBody body={thread?.body} />
                 </div>
                 {/* <div className="thread-content-points-container">
                     <ThreadPointsBar points={thread?.points || 0} responseCount={thread && thread.threadItems && thread.threadItems.length} />
