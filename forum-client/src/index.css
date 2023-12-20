@@ -16,6 +16,15 @@ ul {
   list-style-type: none;
 }
 
+li {
+  margin-bottom: 1em;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
 /* 
   this selector is used for when customizing SlateJS
   this selector specifies that it should not affect salte-node that are listed as elements
