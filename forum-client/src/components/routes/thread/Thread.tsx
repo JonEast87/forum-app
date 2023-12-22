@@ -9,7 +9,7 @@ import { getThreadById } from "../../../services/DataService";
 import Nav from "../../areas/nav/Nav";
 import ThreadBody from "./ThreadBody";
 import ThreadResponseBuilder from "./ThreadResponseBuilder";
-// import ThreadPointer from "../../points/ThreadPointer";
+import ThreadPointsBar from "../../points/ThreadPointBar";
 
 const Thread = () => {
     const [thread, setThread] = useState<ThreadModel | undefined>();
@@ -37,9 +37,9 @@ const Thread = () => {
                     <ThreadTitle title={thread?.title} />
                     <ThreadBody body={thread?.body} />
                 </div>
-                {/* <div className="thread-content-points-container">
+                <div className="thread-content-points-container">
                     <ThreadPointsBar points={thread?.points || 0} responseCount={thread && thread.threadItems && thread.threadItems.length} />
-                </div> */}
+                </div>
             </div>
             <div className="thread-content-response-container">
                 <hr className="thread-section-divider" />
