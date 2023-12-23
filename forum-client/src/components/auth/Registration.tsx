@@ -1,10 +1,10 @@
 import React, { FC, useReducer, useState } from "react";
-import { isPasswordValid, PasswordTestResult } from "../../common/validators/PasswordValidator";
 import ReactModal from "react-modal";
 import { ModalProps } from "../types/ModalProps";
 import userReducer from "./common/UserReducer";
 import { allowSubmit } from "./common/Helpers";
 import "./Registration.css";
+import PasswordComparison from "./common/PasswordComparison";
 
 const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     const [isRegisterDisabled, setRegisterDisabled] = useState(true);
@@ -29,35 +29,6 @@ const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
 
         if (!e.target.value) allowSubmit(dispatch, "Email cannot be empty", true);
         else allowSubmit(dispatch, "", false);
-    };
-
-    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({ payload: e.target.value, type: "password" });
-
-        const passwordCheck: PasswordTestResult = isPasswordValid(e.target.value);
-
-        if (!passwordCheck.isValid) {
-            allowSubmit(dispatch, passwordCheck.message, true);
-            return;
-        }
-        passwordsSame(passwordConfirm, e.target.value);
-    };
-
-    // this is to validate if the registration is allowed or not based on password input
-    const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({ payload: e.target.value, type: "passwordConfirm" });
-        passwordsSame(password, e.target.value);
-    };
-
-    // this compares the first password entry and checks it against the second password entry for veracity
-    const passwordsSame = (passwordVal: string, passwordConfirmVal: string) => {
-        if (passwordVal !== passwordConfirmVal) {
-            allowSubmit(dispatch, "Password do not match!", true);
-            return false;
-        } else {
-            allowSubmit(dispatch, "", false);
-            return true
-        }
     };
 
     const onClickRegister = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -89,12 +60,7 @@ const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
                         <input type="text" value={email} onChange={onChangeEmail} />
                     </div>
                     <div>
-                        <label>password</label>
-                        <input type="password" placeholder="Password" value={password} onChange={onChangePassword} />
-                    </div>
-                    <div>
-                        <label>password confirm</label>
-                        <input type="password" placeholder="Password Confirmation" value={passwordConfirm} onChange={onChangePasswordConfirm} />
+                        <PasswordComparison dispatch={dispatch} password={password} passwordConfirm={passwordConfirm}/>                        
                     </div>
                     <div className="reg-buttons">
                         <div className="reg-btn-left">

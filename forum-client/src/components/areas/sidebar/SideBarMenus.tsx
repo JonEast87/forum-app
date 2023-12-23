@@ -1,18 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { AppState } from "../../../store/AppState";
-import React, { useEffect, useState } from "react";
-import { UserProfileSetType } from "../../../store/user/Reducer";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRegistered, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import Registration from "../../auth/Registration";
 import Login from "../../auth/Login";
+import { Link } from "react-router-dom";
 
 const SideBarMenus = () => {
     const [showRegister, setShowRegister] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const user = useSelector((state: AppState) => state.user);
-
-    const dispatch = useDispatch();
 
     const onClickToggleRegister = () => {
         setShowRegister(!showRegister);
@@ -22,23 +20,13 @@ const SideBarMenus = () => {
         setShowLogin(!showLogin);
     }
 
-    useEffect(() => {
-        dispatch({
-            type:UserProfileSetType,
-            payload: {
-                id: 1,
-                userName: "testUser",
-            },
-        });
-    }, [dispatch]);
-
     return (
         <React.Fragment>
             <ul>
                 <li>
                     <FontAwesomeIcon icon={faUser} />
                     <span className="menu-name">
-                        {user?.userName}
+                        <Link to={`/userprofile/${user?.id}`}>{user?.userName}</Link>
                     </span>
                 </li>
                 <li>
